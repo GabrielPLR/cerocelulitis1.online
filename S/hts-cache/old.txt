@@ -1,0 +1,3 @@
+date	size'/'remotesize	flags(request:Update,Range state:File response:Modified,Chunked,gZipped)	statuscode	status ('servermsg')	MIME	Etag|Date	URL	localfile	(from URL)
+05:02:45	116/116	---M-Z	200	added ('OK')	text/plain	date:Sat,%2022%20Apr%202023%2008:02:54%20GMT	https://wilhelmfontoura.com/robots.txt		(from )
+05:02:46	10984/10984	---M-Z	-1	error ('Error%20when%20decompressing')	text/html	date:Sat,%2022%20Apr%202023%2008:02:54%20GMT	https://wilhelmfontoura.com/ceculitis/	C:/Users/Gabriel/OneDrive/%c3%81rea%20de%20Trabalho/Will/S/wilhelmfontoura.com/ceculitis/index.html	(from )
