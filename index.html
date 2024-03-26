@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <style>
+    @font-face {
+      font-family: Gotham Rounded;
+      src: url("font.otf") format("opentype");
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      font-family: Gotham Rounded;
+    }
+    body {
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+      background: url("fundo.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+    .container {
+      width: 700px;
+      max-width: 90%;
+    }
+    .black {
+      background-color: white;
+      padding: 10px;
+      text-align: center;
+      border-radius: 20px;
+      box-shadow: 0 0 10px 2px;
+    }
+    .answer {
+      display: grid;
+      grid-template-columns: repeat(2, auto);
+      gap: 10px;
+    }
+    @media (max-width: 991px) {
+      .answer {
+        display: grid;
+        grid-template-columns: repeat(1, auto);
+        gap: 10px;
+      }
+    }
+    .btn {
+      border-radius: 10px;
+      padding: 5px 10px;
+      font-size: 30px;
+      background-color: #f7ce6a;
+      outline: none;
+      text-decoration: none;
+      color: black;
+    }
+    .black h1 {
+      color: black;
+    }
+    .black p {
+      font-size: 18px;
+    }
+    .hide {
+      display: none;
+    }
+  </style>
+</head>
+<body> 
+  <div class="container">
+    <div class="black">
+      <div id="perguntas" class="hide">
+        <div class="question" id="pergunta">
+          <!-- Aqui será injetada a pergunta dinamicamente -->
+        </div>
+        <div class="answer" id="respostas">
+          <!-- Aqui serão injetadas as opções de resposta dinamicamente -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Lista de pessoas
+    const pessoas = [
+      "Manuela Lima Costa",
+      "Manuel Costa Pereira",
+      "Priscila Mendes",
+      "Nandy",
+      "Costinha1000",
+      "Milionario da Coca",
+      "Pepsi Cola",
+      "Lana Del Rey",
+      "Vibrio",
+      "Zé Pilintra",
+      "Malandrinho Exu",
+      "Pombogira Mirim",
+      "Maria Padilha",
+      "Zeus dos Ceus",
+      "Morcego"
+    ];
+
+    // Embaralhar a lista de pessoas
+    pessoas.sort(() => Math.random() - 0.5);
+
+    let perguntaAtual = 0;
+
+    function exibirPergunta() {
+      const perguntaDiv = document.getElementById("pergunta");
+      const respostasDiv = document.getElementById("respostas");
+
+      if (perguntaAtual < pessoas.length - 1) {
+        perguntaDiv.innerHTML = `<h1>Quem é mais comível?</h1>`;
+
+        respostasDiv.innerHTML = pessoas.slice(perguntaAtual, perguntaAtual + 2).map(nome => `<button class="btn" onclick="proximo('${nome}')">${nome}</button>`).join('');
+      } else {
+        // Última pergunta
+        perguntaDiv.innerHTML = `<h1>Quem é mais comível?</h1>`;
+
+        respostasDiv.innerHTML = `<button class="btn" onclick="redirect()">Sim</button>
+          <button class="btn" onclick="redirect()">Não</button>`;
+      }
+    }
+
+    function proximo(resposta) {
+      perguntaAtual += 2;
+      document.getElementById("perguntas").classList.add("hide");
+      setTimeout(() => {
+        document.getElementById("perguntas").classList.remove("hide");
+        exibirPergunta();
+      }, 500);
+    }
+
+    function redirect() {
+      location.href = "https://protocolozerobarriga.com"; // SEU LINK AQUI
+    }
+
+    // Iniciar o quiz
+    document.getElementById("perguntas").classList.remove("hide");
+    exibirPergunta();
+  </script>
+</body>
+</html>
+
